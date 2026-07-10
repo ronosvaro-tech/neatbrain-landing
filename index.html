@@ -142,5 +142,37 @@
   <a class="btn" href="https://payhip.com/b/AIJw1" id="cta-sticky">Get it now — $19 →</a>
 </div>
 
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','859801483813189');
+fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=859801483813189&ev=PageView&noscript=1"></noscript>
+
+<script>
+// Carry the ad's UTM parameters through to the Payhip checkout so each sale
+// can be attributed back to the ad that produced it, and signal purchase
+// intent to Meta so the campaign can optimise toward buyers.
+(function () {
+  var params = window.location.search;
+  document.querySelectorAll('a[href*="payhip.com"]').forEach(function (link) {
+    if (params) {
+      link.href += (link.href.indexOf('?') === -1 ? '?' : '&') + params.slice(1);
+    }
+    link.addEventListener('click', function () {
+      if (window.fbq) {
+        fbq('track', 'InitiateCheckout', { value: 19.00, currency: 'USD' });
+      }
+    });
+  });
+})();
+</script>
+
 </body>
 </html>
